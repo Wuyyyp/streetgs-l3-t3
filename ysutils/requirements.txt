@@ -1,0 +1,6 @@
+python==3.8
+open3d==0.18
+opencv-python==4.10
+xmltodict
+pysocks
+matplotlib

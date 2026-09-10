@@ -1,0 +1,134 @@
+task: streetgs_l3_t3
+source_path: /path/to/converted
+model_path: /path/to/model
+exp_name: l3_t3_7view
+gpus:
+- 0
+data:
+  split_test: -1
+  split_train: 1
+  type: M18
+  white_background: false
+  selected_frames:
+  - 0
+  - 100
+  cameras:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 9
+  - 10
+  extent: 20
+  use_colmap: false
+  filter_colmap: true
+  box_scale: 1.35
+model:
+  use_color_correction: true
+  gaussian:
+    sh_degree: 1
+    fourier_dim: 5
+    fourier_scale: 1.0
+    flip_prob: 0.0
+  nsg:
+    include_bkgd: true
+    include_obj: true
+    include_sky: true
+    opt_track: true
+train:
+  iterations: 100000
+  test_iterations:
+  - 1000
+  - 25000
+  - 45000
+  - 50000
+  - 75000
+  - 100000
+  save_iterations:
+  - 1000
+  - 25000
+  - 45000
+  - 50000
+  - 75000
+  - 100000
+  checkpoint_iterations:
+  - 1000
+  - 5000
+  - 10000
+  - 15000
+  - 20000
+  - 25000
+  - 30000
+  - 35000
+  - 40000
+  - 45000
+  - 50000
+  - 55000
+  - 60000
+  - 65000
+  - 70000
+  - 75000
+  - 80000
+  - 85000
+  - 90000
+  - 95000
+  - 100000
+optim:
+  prune_box_interval: 100
+  densification_interval: 100
+  densify_from_iter: 500
+  densify_grad_threshold_bkgd: 0.0006
+  densify_grad_abs_bkgd: true
+  densify_grad_threshold_obj: 0.0002
+  densify_grad_abs_obj: false
+  densify_until_iter: 50000
+  feature_lr: 0.0025
+  max_screen_size: 20
+  min_opacity: 0.0075
+  opacity_lr: 0.05
+  opacity_reset_interval: 3000
+  percent_big_ws: 0.1
+  percent_dense: 0.01
+  position_lr_delay_mult: 0.01
+  position_lr_final: 1.6e-06
+  position_lr_init: 0.00016
+  position_lr_max_steps: 100000
+  rotation_lr: 0.001
+  scaling_lr: 0.005
+  semantic_lr: 0.01
+  lambda_dssim: 0.2
+  lambda_sky: 0.05
+  lambda_mask: 0.1
+  lambda_reg: 0.1
+  lambda_depth_lidar: 0.1
+  track_position_lr_delay_mult: 0.01
+  track_position_lr_init: 0.005
+  track_position_lr_final: 5.0e-05
+  track_position_max_steps: 30000
+  track_rotation_lr_delay_mult: 0.01
+  track_rotation_lr_init: 0.001
+  track_rotation_lr_final: 1.0e-05
+  track_rotation_max_steps: 30000
+  lidar_clip:
+  - 0.1
+  - 200.0
+  lidar_weigth_decay: 1.0
+  static_prune_enabled: true
+  static_prune_interval: 10000
+  static_prune_cdf_threshold: 0.99
+  static_prune_until_iter: 45000
+render:
+  fps: 24
+  concat_cameras:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 9
+  - 10
+record_dir: /path/to/model/record
+data_device: cpu
+resume: true
+loaded_iter: -1

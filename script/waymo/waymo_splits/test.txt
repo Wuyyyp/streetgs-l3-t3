@@ -1,0 +1,4 @@
+# scene_id, seg_name, start_timestep, end_timestep, scene_type
+176,seg139090,0,-1,high-speed-dfrd
+24,seg104859,0,-1,static-dfrd
+44,seg108305,0,-1,dynamic-dfrd
